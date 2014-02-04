@@ -1,0 +1,5 @@
+nose
+requests
+selenium == 2.37.2
+nosexcover
+pylint
