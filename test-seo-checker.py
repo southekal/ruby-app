@@ -3,15 +3,17 @@ import requests
 import argparse
 import time
 
+class TestSEOChecker():
 
-servers = ['http://www.reddit.com']
+	def testseoscript ():
+		servers = ['http://www.reddit.com']
 
-for server in servers:
-	r = requests.get(server)
-	soup = BeautifulSoup(r.text)
+		for server in servers:
+			r = requests.get(server)
+			soup = BeautifulSoup(r.text)
 
-	print 'Header H1:', soup.h1
-	print 'Header H2:', soup.h2
+			print 'Header H1:', soup.h1
+			print 'Header H2:', soup.h2
 
-	for link in soup.find_all('a'):
-		print link.get('href')
+			for link in soup.find_all('a'):
+				print link.get('href')
