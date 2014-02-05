@@ -9,6 +9,7 @@ def test_seoscript ():
 	servers = ['http://www.reddit.com']
 
 	for server in servers:
+		urllen = []
 		r = requests.get(server)
 		soup = BeautifulSoup(r.text)
 
@@ -18,7 +19,8 @@ def test_seoscript ():
 		assert soup.h2.text
 
 		for link in soup.find_all('a'):
-			print link.get('href')
+			urllen.append(link.get('href'))
+		assert urllen != []
 
 def test_evens():
     for i in range(0, 5):
