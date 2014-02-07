@@ -6,7 +6,7 @@ import time
 #class TestSEOChecker():
 
 def test_seoscript ():
-	servers = ['http://www.amazon.com']
+	servers = ['http://www.gifts.com']
 
 	for server in servers:
 		urllen = []
