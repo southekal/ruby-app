@@ -15,8 +15,8 @@ def test_seoscript ():
 
 		print soup.h1
 		print soup.h2
-		assert soup.h1.text
-		assert soup.h2.text
+		assert soup.h1
+		assert soup.h2
 
 		for link in soup.find_all('a'):
 			urllen.append(link.get('href'))
