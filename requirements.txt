@@ -4,3 +4,5 @@ selenium == 2.37.2
 nosexcover
 pylint
 beautifulsoup4
+user-agents
+
