@@ -61,26 +61,29 @@ redirect_handler = MyHTTPRedirectHandler() #creating an instance of the class ob
 opener = urllib2.build_opener(redirect_handler, cookieprocessor)
 urllib2.install_opener(opener)
 
-for server in servers:
-    for agent in agents:
-        request = urllib2.Request(server)
-        request.add_header('User-agent',agent['user_agent'])
-        response = urllib2.urlopen(request)
-           
-        if agent['mobile'] == 'True':
-            headers = redirect_handler.headers
-            #if headers: - do we need this? if Firefox = Mobile True then it doesn't enter this and throw an error
-            #print agent['user_agent']
-            #assert headers['Location'] == 'http://m.gifts.com/'
-            print headers['Location']
-            print 'mobile device', agent['user_agent'] ,'is redirected correctly '
-            assert response.getcode() == 200
-            print '200 OK'
-            redirect_handler.headers = None
-            
-        else:
-            headers = redirect_handler.headers
-            assert headers == None
+def testuseragent():
+    for server in servers:
+        for agent in agents:
+            request = urllib2.Request(server)
+            request.add_header('User-agent',agent['user_agent'])
+            response = urllib2.urlopen(request)
+               
+            if agent['mobile'] == 'True':
+                headers = redirect_handler.headers
+                #if headers: - do we need this? if Firefox = Mobile True then it doesn't enter this and throw an error
+                #print agent['user_agent']
+                #assert headers['Location'] == 'http://m.gifts.com/'
+                print headers['Location']
+                print 'mobile device', agent['user_agent'] ,'is redirected correctly '
+                assert response.getcode() == 200
+                print '200 OK'
+                redirect_handler.headers = None
+                
+            else:
+                headers = redirect_handler.headers
+                assert headers == None
+
+testuseragent()
         
         #library to determine type of device
         #useragent_check = parse(agent['user_agent'])
